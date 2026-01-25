@@ -8,7 +8,12 @@ public class Pohon : MonoBehaviour
     [SerializeField] private float speed;
     public PohonSpawner spawner;
 
-
+    private void Start()
+    {
+        EnemySpawner.instance.spawnCurr = 0;
+        ClickingManager.instance.clickCount = 0;
+        GameManager.instance.wave++;
+    }
     void Update()
     {
         if (!GameManager.instance.onMinigame)

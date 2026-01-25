@@ -6,6 +6,7 @@ public class SkullSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject skullPrefab;
 
+
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
 
     public int spawnMax = 5;

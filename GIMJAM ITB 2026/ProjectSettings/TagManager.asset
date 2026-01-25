@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerController
   - Delete
+  - PlayerBush
   layers:
   - Default
   - TransparentFX

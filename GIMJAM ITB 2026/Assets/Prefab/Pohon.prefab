@@ -304,6 +304,7 @@ Transform:
   m_Children:
   - {fileID: 5924057359362564210}
   - {fileID: 6734176166877175360}
+  - {fileID: 2245238219705102064}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4764710103165552921
@@ -318,7 +319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76e1c619fc659a438facc5a3fa03f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onMinigame: 0
   speed: 2
   spawner: {fileID: 0}
 --- !u!61 &7870874430903238933
@@ -353,7 +353,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.014798135, y: -0.8928179}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -364,7 +364,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.49686533, y: 1.2269031}
   m_EdgeRadius: 0
 --- !u!50 &7239237167314276023
 Rigidbody2D:
@@ -595,10 +595,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5924057359362564210}
   - component: {fileID: 5696279932842986548}
-  - component: {fileID: 6001909135159091492}
+  - component: {fileID: 7311895984335320070}
   m_Layer: 0
   m_Name: Daun
-  m_TagString: Untagged
+  m_TagString: PlayerBush
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -671,8 +671,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6001909135159091492
-CircleCollider2D:
+--- !u!61 &7311895984335320070
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -704,5 +704,46 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!1 &8155651321564267349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2245238219705102064}
+  m_Layer: 0
+  m_Name: AimPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2245238219705102064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8155651321564267349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.09, y: 0.85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4017163861968990516}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -21,6 +21,10 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
     public void ExitGame()
     {
         Application.Quit();

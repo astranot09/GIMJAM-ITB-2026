@@ -23,6 +23,6 @@ public class GameManager : MonoBehaviour
     public void GameTime()
     {
         onMinigame = true;
-        ClickingManager.instance.clickingTime = true;
+        ClickingManager.instance.ClickGameTime();
     }
 }

@@ -6,7 +6,7 @@ public class ClickingManager : MonoBehaviour
 {
 
     public static ClickingManager instance;
-
+    
     private void Awake()
     {
         if (instance == null)
@@ -15,7 +15,6 @@ public class ClickingManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     [SerializeField] private float currTime;
@@ -24,6 +23,8 @@ public class ClickingManager : MonoBehaviour
     public float clickCount = 0;
 
     public bool clickingTime = false;
+
+    [SerializeField] private Player player;
 
     void Start()
     {
@@ -36,9 +37,18 @@ public class ClickingManager : MonoBehaviour
             currTime -= Time.deltaTime;
             timerText.text = currTime.ToString("F2");
         }
-        else
+        else if(currTime < 0 && clickingTime)
         {
             clickingTime = false;
+            EnemySpawner.instance.AttackTime();
+            player.CalculateAmmo(clickCount);
         }
     }
+
+    public void ClickGameTime()
+    {
+        clickingTime = true;
+        currTime = maxTime;
+    }
+
 }
