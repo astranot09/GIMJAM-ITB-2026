@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Pohon : MonoBehaviour
 {
-    public bool onMinigame = false;
+    private bool trigger = false;
     [SerializeField] private float speed;
     public PohonSpawner spawner;
 
 
     void Update()
     {
-        if (!onMinigame)
+        if (!GameManager.instance.onMinigame)
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
@@ -19,6 +19,15 @@ public class Pohon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("GameController"))
+        {
+            if (!trigger)
+            {
+                trigger = true;
+                GameManager.instance.GameTime();
+            }
+                
+        }
         if (collision.CompareTag("Delete"))
         {
             Debug.Log("hi");
