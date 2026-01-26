@@ -8,6 +8,8 @@ TagManager:
   - Delete
   - PlayerBush
   - Enemy
+  - Notif
+  - Awan
   layers:
   - Default
   - TransparentFX

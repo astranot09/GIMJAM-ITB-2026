@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour, IDamageable
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
         currHealth = maxHealth;
-        StartCoroutine(Delay());
+        //StartCoroutine(Delay());
     }
 
     private void FixedUpdate()

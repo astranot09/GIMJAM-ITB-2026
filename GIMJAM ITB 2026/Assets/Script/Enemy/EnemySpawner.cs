@@ -62,6 +62,8 @@ public class EnemySpawner : MonoBehaviour
             enemyDead = 0;
             GameManager.instance.onMinigame = false;
             PlayerInputManager.instance.DissableMode();
+
+            AwanSpawner.instance.DeleteAwan();
         }
     }
     public void AttackTime()

@@ -31,6 +31,7 @@ public class Pohon : MonoBehaviour
             {
                 trigger = true;
                 GameManager.instance.GameTime();
+                AwanSpawner.instance.SpawnRandomTarget(WaveManager.instance.wave / 10);
             }
                 
         }
