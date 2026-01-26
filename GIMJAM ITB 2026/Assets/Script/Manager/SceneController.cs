@@ -17,6 +17,10 @@ public class SceneController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void Homepage()
+    {
+        SceneManager.LoadScene("Homepage");
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");

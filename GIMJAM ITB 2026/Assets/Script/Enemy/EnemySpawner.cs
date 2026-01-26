@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
     [SerializeField] private GameObject enemyPrefab;
+    public float enemySpeed;
 
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
 
@@ -45,6 +46,7 @@ public class EnemySpawner : MonoBehaviour
         Transform chosenPivot = emptyPivots[Random.Range(0, emptyPivots.Count)];
 
         GameObject enemy = Instantiate(enemyPrefab, chosenPivot.position, Quaternion.identity, chosenPivot);
+        enemy.GetComponent<Enemy>().moveSpeed = enemySpeed;
 
         spawnCurr++;
 
@@ -57,12 +59,16 @@ public class EnemySpawner : MonoBehaviour
         if (enemyDead == spawnMax)
         {
             Debug.Log("selesai");
+            enemyDead = 0;
             GameManager.instance.onMinigame = false;
+            PlayerInputManager.instance.DissableMode();
         }
     }
     public void AttackTime()
     {
-        StartCoroutine(SpawningEnemyWave());
+        NotificationManager.instance.Notification("Kill the Enemy!!");
+        StartCoroutine(Delay());
+        
     }
 
 
@@ -73,5 +79,11 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(0.6f);
             SpawnEnemy();
         }
+    }
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1f);
+        PlayerInputManager.instance.AttackMode();
+        StartCoroutine(SpawningEnemyWave());
     }
 }

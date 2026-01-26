@@ -23,6 +23,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Transform healthBar;
 
     [SerializeField] private TMP_Text ammoCount;
+    [SerializeField] private TMP_Text scoreCount;
     public void UpdateHealthUI()
     {
         foreach (Transform child in healthBar)
@@ -37,5 +38,9 @@ public class PlayerUI : MonoBehaviour
     public void UpdateAmmoUI()
     {
         ammoCount.text = player.ammo.ToString();
+    }
+    public void UpdateScoreUI()
+    {
+        scoreCount.text = GameManager.instance.score.ToString();
     }
 }

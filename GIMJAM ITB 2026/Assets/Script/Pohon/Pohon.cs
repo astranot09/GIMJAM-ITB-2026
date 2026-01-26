@@ -12,7 +12,8 @@ public class Pohon : MonoBehaviour
     {
         EnemySpawner.instance.spawnCurr = 0;
         ClickingManager.instance.clickCount = 0;
-        GameManager.instance.wave++;
+        WaveManager.instance.wave++;
+        WaveManager.instance.CheckWave();
     }
     void Update()
     {
@@ -32,6 +33,10 @@ public class Pohon : MonoBehaviour
                 GameManager.instance.GameTime();
             }
                 
+        }
+        if (collision.CompareTag("Notif"))
+        {
+            NotificationManager.instance.Notification("You have 10 seconds to make bullet");
         }
         if (collision.CompareTag("Delete"))
         {

@@ -28,17 +28,20 @@ public class ClickingManager : MonoBehaviour
 
     void Start()
     {
+        timerText.gameObject.SetActive(false);
         currTime = maxTime;
     }
     void Update()
     {
         if(currTime >= 0 && clickingTime)
         {
+            timerText.gameObject.SetActive(true);
             currTime -= Time.deltaTime;
             timerText.text = currTime.ToString("F2");
         }
         else if(currTime < 0 && clickingTime)
         {
+            timerText.gameObject.SetActive(false);
             clickingTime = false;
             EnemySpawner.instance.AttackTime();
             player.CalculateAmmo(clickCount);

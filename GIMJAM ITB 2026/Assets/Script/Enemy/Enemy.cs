@@ -45,8 +45,9 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Destroy(gameObject);
             EnemySpawner.instance.EnemyDead();
+            GameManager.instance.score++;
+            PlayerUI.instance.UpdateScoreUI();
         }
-        GameManager.instance.score++;
     }
 
     IEnumerator Delay()

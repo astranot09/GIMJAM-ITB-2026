@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BulletScript : MonoBehaviour
+{
+    [SerializeField] private Vector3 mousePos;
+    [SerializeField] private Camera mainCam;
+    private Rigidbody2D rb;
+    public float force;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        rb = GetComponent<Rigidbody2D>();
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 direction = mousePos - transform.position;
+        Vector3 rotation = transform.position - mousePos;
+        rb.velocity = new Vector2 (direction.x, direction.y).normalized * force;
+        float rot = Mathf.Atan2(rotation.y,rotation.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+        StartCoroutine(Destoy());
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            enemy.GetAttacked(1);
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator Destoy()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
+}

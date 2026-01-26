@@ -22,6 +22,7 @@ public class Player : MonoBehaviour, IDamageable
         PlayerUI.instance.UpdateHealthUI();
         if (currHealth <= 0)
         {
+            ButtonManager.instance.Lose();
             Destroy(gameObject);
         }
         GameManager.instance.score++;
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void CalculateAmmo(float skull)
     {
-        ammo = Mathf.RoundToInt(skull * 2 / 3);
+        ammo += Mathf.RoundToInt(skull * 2 / 3);
         PlayerUI.instance.UpdateAmmoUI();
     }
 }

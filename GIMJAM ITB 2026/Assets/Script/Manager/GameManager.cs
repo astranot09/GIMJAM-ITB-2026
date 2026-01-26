@@ -13,11 +13,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Time.timeScale = 1f;
     }
     public int score = 0;
-    public int wave = 0;
-
-
     public bool onMinigame = false;
 
     public void GameTime()
