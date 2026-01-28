@@ -66,7 +66,7 @@ public class EnemySpawner : MonoBehaviour
             player.GetComponent<PlayerAnimScript>().FallAnimation();
             PlayerInputManager.instance.DissableMode();
 
-            AwanSpawner.instance.DeleteAwan();
+            //AwanSpawner.instance.DeleteAwan();
         }
     }
     public void AttackTime()

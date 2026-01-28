@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour, IDamageable
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
         currHealth = maxHealth;
+        Check();
         //StartCoroutine(Delay());
     }
 
@@ -50,6 +52,20 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
+    void Check()
+    {
+        Vector2 direction = (playerLocation.position - transform.position).normalized;
+
+
+        if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
     IEnumerator Delay()
     {
         var i = moveSpeed;

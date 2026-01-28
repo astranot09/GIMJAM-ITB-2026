@@ -8,12 +8,18 @@ public class PlayerAnimScript : MonoBehaviour
     [SerializeField] private float speed;
     public PohonSpawner spawner;
     [SerializeField] Animator animator;
+    [SerializeField] private SpriteRenderer sr;
+
+    private Rigidbody2D rb;
     private void Start()
     {
+        animator = GetComponent<Animator>();
         EnemySpawner.instance.spawnCurr = 0;
         ClickingManager.instance.clickCount = 0;
         WaveManager.instance.wave++;
         WaveManager.instance.CheckWave();
+        sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
@@ -32,7 +38,7 @@ public class PlayerAnimScript : MonoBehaviour
                 trigger = true;
                 JumpAnimation();
                 GameManager.instance.GameTime();
-                AwanSpawner.instance.SpawnRandomTarget(WaveManager.instance.wave / 10);
+                //AwanSpawner.instance.SpawnRandomTarget(WaveManager.instance.wave / 10);
             }
 
         }
@@ -57,12 +63,25 @@ public class PlayerAnimScript : MonoBehaviour
 
     public void JumpAnimation()
     {
-        //animator.SetTrigger("isJumping");
+        animator.SetTrigger("isJumping");
         Debug.Log("Jump");
+        //rb.velocity = new Vector2(rb.velocity.x, 2);
+        //animator.SetTrigger("isJumping");
+
     }
     public void FallAnimation()
     {
-        //animator.SetTrigger("isFalling");
+        animator.SetTrigger("isFalling");
         Debug.Log("Fall");
+    }
+
+    public void Hide()
+    {
+        Debug.Log("Hilang");
+        sr.enabled = false;
+    }
+    public void UnHide()
+    {
+        sr.enabled = true;
     }
 }

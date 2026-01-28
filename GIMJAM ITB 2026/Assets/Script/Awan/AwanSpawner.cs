@@ -24,26 +24,35 @@ public class AwanSpawner : MonoBehaviour
     private Vector2 locationSpawn;
     [SerializeField] private GameObject awanPrefab;
 
-    public void SpawnRandomTarget(int n)
+    //public void SpawnRandomTarget(int n)
+    //{
+    //    for(int i = 0; i < n; i++)
+    //    {
+    //        locationSpawn = new Vector2(
+    //        Random.Range(minArea.x, maxArea.x),
+    //        Random.Range(minArea.y, maxArea.y)
+    //        );
+    //        Instantiate(awanPrefab, locationSpawn, Quaternion.identity);
+    //    }
+
+    //}
+    //public void DeleteAwan()
+    //{
+    //    GameObject[] awan = GameObject.FindGameObjectsWithTag("Awan");
+
+
+    //    foreach (GameObject a in awan)
+    //    {
+    //        Destroy(a);
+    //    }
+    //}
+    public void SpawnRandomTarget()
     {
-        for(int i = 0; i < n; i++)
-        {
-            locationSpawn = new Vector2(
-            Random.Range(minArea.x, maxArea.x),
-            Random.Range(minArea.y, maxArea.y)
-            );
-            Instantiate(awanPrefab, locationSpawn, Quaternion.identity);
-        }
+        locationSpawn = new Vector2(
+        Random.Range(minArea.x, maxArea.x),
+        Random.Range(minArea.y, maxArea.y)
+        );
+        Instantiate(awanPrefab, locationSpawn, Quaternion.identity);
 
-    }
-    public void DeleteAwan()
-    {
-        GameObject[] awan = GameObject.FindGameObjectsWithTag("Awan");
-
-
-        foreach (GameObject a in awan)
-        {
-            Destroy(a);
-        }
     }
 }
