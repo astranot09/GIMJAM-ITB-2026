@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Notif
   - Awan
+  - PlayerAnimation
   layers:
   - Default
   - TransparentFX

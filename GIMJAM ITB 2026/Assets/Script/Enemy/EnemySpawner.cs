@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     [SerializeField] private GameObject enemyPrefab;
     public float enemySpeed;
 
@@ -61,6 +62,8 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log("selesai");
             enemyDead = 0;
             GameManager.instance.onMinigame = false;
+            var player = GameObject.FindGameObjectWithTag("PlayerAnimation");
+            player.GetComponent<PlayerAnimScript>().FallAnimation();
             PlayerInputManager.instance.DissableMode();
 
             AwanSpawner.instance.DeleteAwan();

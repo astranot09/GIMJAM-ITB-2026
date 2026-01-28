@@ -14,6 +14,6 @@ public class PohonSpawner : MonoBehaviour
     public void SpawnPohon()
     {
         GameObject pohon = Instantiate(this.pohon, spawnPoint);
-        pohon.GetComponent<Pohon>().spawner = this;
+        pohon.GetComponent<PlayerAnimScript>().spawner = this;
     }
 }

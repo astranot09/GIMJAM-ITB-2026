@@ -14,12 +14,11 @@ public class SceneController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     public void Homepage()
     {
-        SceneManager.LoadScene("Homepage");
+        SceneManager.LoadScene("MainMenu");
     }
     public void StartGame()
     {

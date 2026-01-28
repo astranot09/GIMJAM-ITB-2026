@@ -25,7 +25,7 @@ public class Player : MonoBehaviour, IDamageable
             ButtonManager.instance.Lose();
             Destroy(gameObject);
         }
-        GameManager.instance.score++;
+        //GameManager.instance.score++;
     }
 
     public void CalculateAmmo(float skull)
