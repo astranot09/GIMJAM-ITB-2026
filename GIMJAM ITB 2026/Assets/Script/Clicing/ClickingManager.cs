@@ -37,7 +37,7 @@ public class ClickingManager : MonoBehaviour
         {
             timerText.gameObject.SetActive(true);
             currTime -= Time.deltaTime;
-            timerText.text = currTime.ToString("F2");
+            timerText.text = currTime.ToString("F0");
         }
         else if(currTime < 0 && clickingTime)
         {
