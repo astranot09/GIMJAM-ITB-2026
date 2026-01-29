@@ -18,6 +18,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject pausePanel;
+    public bool paused = false;
     [SerializeField] private GameObject creditPanel;
     [SerializeField] private GameObject losePanel;
 
@@ -27,11 +28,15 @@ public class ButtonManager : MonoBehaviour
             return;
 
         pausePanel.SetActive(!pausePanel.activeSelf);
-        if(pausePanel.activeSelf)
+        if (pausePanel.activeSelf)
+        {
             Time.timeScale = 0f;
+            paused = true;
+        }
         else
         {
             Time.timeScale = 1f;
+            paused = false;
         }
     }
     public void Lose()

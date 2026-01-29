@@ -19,7 +19,7 @@ public class ClickingManager : MonoBehaviour
 
     [SerializeField] private float currTime;
     [SerializeField] private float maxTime;
-    [SerializeField] private TMP_Text timerText;
+    //[SerializeField] private TMP_Text timerText;
     public float clickCount = 0;
 
     public bool clickingTime = false;
@@ -28,20 +28,20 @@ public class ClickingManager : MonoBehaviour
 
     void Start()
     {
-        timerText.gameObject.SetActive(false);
+        //timerText.gameObject.SetActive(false);
         currTime = maxTime;
     }
     void Update()
     {
         if(currTime >= 0 && clickingTime)
         {
-            timerText.gameObject.SetActive(true);
+            //timerText.gameObject.SetActive(true);
             currTime -= Time.deltaTime;
-            timerText.text = currTime.ToString("F0");
+            //timerText.text = currTime.ToString("F0");
         }
         else if(currTime < 0 && clickingTime)
         {
-            timerText.gameObject.SetActive(false);
+            //timerText.gameObject.SetActive(false);
             clickingTime = false;
             EnemySpawner.instance.AttackTime();
             player.CalculateAmmo(clickCount);

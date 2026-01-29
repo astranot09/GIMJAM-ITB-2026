@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,22 +13,30 @@ public class AudioManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
 
     public AudioSource audioSource;
     public AudioSource SFXSource;
 
-    public AudioClip background;
+    public AudioClip backgroundMainMenu;
+    public AudioClip backgroundInGame;
     public AudioClip click;
-
+    public AudioClip shoot;
 
 
     private void Start()
     {
-        audioSource.clip = background;
+        audioSource.clip = backgroundMainMenu;
         audioSource.Play();
     }
+    public void PlayBackground(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);

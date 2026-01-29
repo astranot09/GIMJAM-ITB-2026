@@ -15,6 +15,7 @@ public class BulletScript : MonoBehaviour
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        AudioManager.instance.PlaySFX(AudioManager.instance.shoot);
         Vector3 direction = mousePos - transform.position;
         Vector3 rotation = transform.position - mousePos;
         rb.velocity = new Vector2 (direction.x, direction.y).normalized * force;

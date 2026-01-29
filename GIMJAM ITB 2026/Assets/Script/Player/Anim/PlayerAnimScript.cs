@@ -7,26 +7,28 @@ public class PlayerAnimScript : MonoBehaviour
     private bool trigger = false;
     [SerializeField] private float speed;
     public PohonSpawner spawner;
-    [SerializeField] Animator animator;
+    //[SerializeField] Animator animator;
     [SerializeField] private SpriteRenderer sr;
-
+    [SerializeField] private float jumpForce;
+    [SerializeField] private GameObject border;
     private Rigidbody2D rb;
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         EnemySpawner.instance.spawnCurr = 0;
         ClickingManager.instance.clickCount = 0;
         WaveManager.instance.wave++;
         WaveManager.instance.CheckWave();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        border = GameObject.Find("Floor2");
     }
     void Update()
     {
-        if (!GameManager.instance.onMinigame)
-        {
+        //if (!GameManager.instance.onMinigame)
+        //{
             transform.position += Vector3.right * speed * Time.deltaTime;
-        }
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,6 +40,7 @@ public class PlayerAnimScript : MonoBehaviour
                 trigger = true;
                 JumpAnimation();
                 GameManager.instance.GameTime();
+                StartCoroutine(UnHide());
                 //AwanSpawner.instance.SpawnRandomTarget(WaveManager.instance.wave / 10);
             }
 
@@ -50,6 +53,7 @@ public class PlayerAnimScript : MonoBehaviour
         {
             Debug.Log("hi");
             spawner.SpawnPohon();
+            border.SetActive(true);
             Destroy(gameObject);
         }
 
@@ -58,30 +62,33 @@ public class PlayerAnimScript : MonoBehaviour
     public void RunAnimation()
     {
         //animator.SetBool("isRunning", true);
-        Debug.Log("Jump");
+        //Debug.Log("Jump");
     }
 
     public void JumpAnimation()
     {
-        animator.SetTrigger("isJumping");
-        Debug.Log("Jump");
-        //rb.velocity = new Vector2(rb.velocity.x, 2);
-        //animator.SetTrigger("isJumping");
-
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        border.SetActive(true);
     }
     public void FallAnimation()
     {
-        animator.SetTrigger("isFalling");
+        //animator.SetTrigger("isFalling");
         Debug.Log("Fall");
+        border.SetActive(false);
+        StartCoroutine(Hide());
     }
 
-    public void Hide()
+    private IEnumerator UnHide()
     {
-        Debug.Log("Hilang");
-        sr.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("pppp");
+        RedTopTreeScript red = GameObject.Find("RedTopTree").GetComponent<RedTopTreeScript>();
+        red.UnHide();
     }
-    public void UnHide()
+    private IEnumerator Hide()
     {
-        sr.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        RedTopTreeScript red = GameObject.Find("RedTopTree").GetComponent<RedTopTreeScript>();
+        red.Hide();
     }
 }

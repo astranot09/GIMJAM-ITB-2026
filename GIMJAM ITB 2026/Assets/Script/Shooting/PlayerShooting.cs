@@ -28,6 +28,7 @@ public class PlayerShooting : MonoBehaviour
 
     public void OnAttack(CallbackContext ctx)
     {
+        if (ButtonManager.instance.paused) return;
         if (ctx.performed && player.ammo > 0)
         {
             canFire = false;

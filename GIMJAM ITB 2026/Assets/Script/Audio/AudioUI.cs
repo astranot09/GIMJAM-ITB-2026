@@ -24,7 +24,7 @@ public class AudioUI : MonoBehaviour
     {
         AudioManager.instance.MuteMusic();
         UpdateUI();
-        AudioManager.instance.PlaySFX(AudioManager.instance.click);
+        //AudioManager.instance.PlaySFX(AudioManager.instance.click);
     }
 
 
@@ -32,7 +32,7 @@ public class AudioUI : MonoBehaviour
     {
         AudioManager.instance.MuteSound();
         UpdateUI();
-        AudioManager.instance.PlaySFX(AudioManager.instance.click);
+        //AudioManager.instance.PlaySFX(AudioManager.instance.click);
     }
 
 
